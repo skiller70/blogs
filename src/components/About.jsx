@@ -46,7 +46,7 @@ function About(props) {
 
   return (
     <div>
-      <h1>hello this is about page guys </h1>
+      <h1>hello this is about page  g </h1>
       <h2>ggwp {myNum}</h2>
       <button onClick={ggwp}>click me </button>
       <button onClick={jwtVerify}>jwtverify</button>
