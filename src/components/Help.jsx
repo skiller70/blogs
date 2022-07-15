@@ -8,10 +8,11 @@ function Help(props) {
   });
   const [posts,setPosts] = useState('')
     useEffect(()=>{
-      const postDetails = userPosts.map((item,index) => {
+      const postDetails = userPosts.map((item,i) => {
         return (
           
             <UserPost
+             key={i}
               title={item.title}
               date={item.date}  
               likes={item.likes.length}
