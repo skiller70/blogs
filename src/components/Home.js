@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import store from "../reduxToolkit/storeTool";
 import axios from "axios";
 import { useNavigate } from "react-router";
+
 import Logout from "./Logout";
 import jwt from "jwt-decode";
 import { Navigate } from "react-router";
+import NewUserPost from "./helpComponents/NewUserPost";
 function Home(props) {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -30,7 +32,13 @@ const userName = useSelector((state)=>{return state.custom.USER_TOKEN_VALUE.user
           click me
         </button>
     
-      </div>
+
+
+         
+
+
+
+           </div>
     );
     
   }

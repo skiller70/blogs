@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import img1 from "./images/building.jpg";
 import { postsData } from "../../reduxToolkit/reducerTool";
 import { useNavigate } from "react-router";
+import { Navigate } from "react-router";
 function UserPost(props) {
   const dispatch = useDispatch();
   const [like, setLike] = useState(false);
   const [deletebtn, setDeletebtn] = useState(false);
+  const [isloading,setIsloading] = useState(true)
   const nav = useNavigate();
 
   const checkLikes = useSelector((state) => {
@@ -26,6 +28,7 @@ function UserPost(props) {
   });
 
   useEffect(() => {
+
     const USER_LIKE = checkLikes.map((item) => {
       return item.includes(personId);
     });
@@ -45,8 +48,7 @@ function UserPost(props) {
         setDeletebtn(false);
       }
     }
-
-    
+setIsloading(false)
   
 
   }, []);
@@ -87,15 +89,31 @@ function UserPost(props) {
           setLike(false);
         });
     } else {
-      nav("/login");
+      <Navigate to="/" replace/>
     }
   };
   ///
 
+
+  if(isloading){
+    return( <div className="flex justify-center items-center">
+    <div
+      className="animate-spin inline-block w-8 h-8 border-4 border-t-transparent    border-solid border-orange-300 rounded-full"
+      role="status"
+    >
+      <span className="visually-hidden"></span>
+    </div>
+  </div>)
+
+  }else{
+
+
+
+
   return (
     <div className="flex justify-center font-karla bg-gray-200      ">
       <div className=" flex flex-col my-10 max-w-lg md:max-w-xl  bg-white lg:shadow-lg lg:rounded-lg ">
-        <img className=" lg:rounded-t-lg  max-h-56 " src={img1} alt="" />
+        <img className=" lg:rounded-t-lg  max-h-56 " src={require(`./images/${props.images}`)} alt="" />
 
         <div>
           <p className=" flex pt-4 pl-6 justify-center sm:justify-start ">
@@ -153,6 +171,7 @@ function UserPost(props) {
       </div>
     </div>
   );
+}
 }
 
 export default UserPost;

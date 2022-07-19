@@ -41,10 +41,10 @@ function Login(props) {
     } else {
       //IF USER FOUND THEN STORE IN LOCAL STORAGE
       const decoded = jwt(jwt_response);
-
+      console.log(decoded)
       localStorage.setItem("token", jwt_response);
       // IF USER FOUND THEN STORE IN REDUX
-      dispatch({ type: "increment", payload: decoded.userDetail[0] });
+      dispatch({ type: "USER_INFO_TOKEN", payload: decoded.userDetail[0] });
       nav("/");
     }
   };

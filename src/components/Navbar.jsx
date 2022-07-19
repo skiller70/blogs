@@ -5,7 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
 import About from "./About";
-import Help from "./Help";
+import Blogs from "./Blogs";
 import { useSelector} from "react-redux";
 import Logout from "./Logout";
 
@@ -53,8 +53,8 @@ const isLogin = isUser ? (
               </Link>
             </li>
             <li>
-              <Link to="/help" className="ml-1 lg:ml-8 md:ml-6 sm:ml-4">
-                Help
+              <Link to="/blogs" className="ml-1 lg:ml-8 md:ml-6 sm:ml-4">
+                Blogs
               </Link>
             </li>
           </ul>
@@ -71,7 +71,7 @@ const isLogin = isUser ? (
         <Routes>
           <Route exact path="/" element={<Home/>}></Route>
           <Route  path="/about" element={<About />}></Route>
-          <Route  path="/help" element={<Help />}></Route>
+          <Route  path="/blogs" element={<Blogs />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/logout" element={<Home/>}></Route>
           <Route  path="/register" element={<Register />}></Route>
