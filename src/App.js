@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Main from "./components/Main";
 import axios from "axios";
 import jwt from "jwt-decode";
+import { ALL_USER_COMMENTS } from "./reduxToolkit/reducerTool";
  function App() {
   const dispatch = useDispatch();
 
@@ -22,18 +23,25 @@ import jwt from "jwt-decode";
       
      //IF USER NOT LOGOUT THEN SEND ALL TOKEN VALUE TO REDUX STORE
     dispatch({ type: "USER_INFO_TOKEN", payload: decodedToken.userDetail[0] });
-      
-
-    }
-    //INITIAL ALL POSTS RENDER REDUX STORE
+    
+        //INITIAL ALL POSTS RENDER REDUX STORE
      dispatch(postsData())
 
-   
+     //INITIAL ALL COMMENTS RENDER REDUX STORE
+     dispatch(ALL_USER_COMMENTS())
+
+
+
+    }
+  
   return (
     <>
+   
       <div className="App">
-        <Main />
+      
+        <Main />  
       </div>
+      
     </>
   );
 }

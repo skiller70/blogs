@@ -8,6 +8,8 @@ import About from "./About";
 import Blogs from "./Blogs";
 import { useSelector} from "react-redux";
 import Logout from "./Logout";
+import ShowAllComments from "./helpComponents/ShowAllComments";
+
 
 function Navbar(props) {
 
@@ -75,6 +77,9 @@ const isLogin = isUser ? (
           <Route path="/login" element={<Login />}></Route>
           <Route path="/logout" element={<Home/>}></Route>
           <Route  path="/register" element={<Register />}></Route>
+          <Route path="/comments/:commentId" element={<ShowAllComments />}></Route>
+
+          ShowAllComments
         </Routes>
       </>
     </Router>

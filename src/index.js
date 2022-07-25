@@ -5,15 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './reduxToolkit/storeTool';
 import { Provider } from 'react-redux';
+import { postsData } from './reduxToolkit/reducerTool';
+import { POST_COMMENT } from './reduxToolkit/reducerTool';
+
+store.dispatch(postsData)
+store.dispatch(POST_COMMENT)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-
-<React.StrictMode> 
 <Provider store={store}>
+  
     <App />
+    
     </Provider>
- </React.StrictMode>  
+ 
   
 );
 

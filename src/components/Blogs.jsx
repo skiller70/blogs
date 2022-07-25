@@ -2,38 +2,42 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import UserPost from "./helpComponents/UserPost";
 import CreatePost from "./helpComponents/CreatePost";
-import NewUserPost from "./helpComponents/NewUserPost";
+;
+
 function Blogs(props) {
   //ALL USERS POSTS FROM REDUX
-  const userPosts = useSelector((state) => {
-    return state.custom.getAllPost;
+
+  const {getAllPost,isLoading} = useSelector((state) => {
+    return state.custom
   });
 
  
   //THIS VARIABLE SATE FOR STORING ALL USER POST FOR USER COMPONENT
   const [posts, setPosts] = useState("");
-  const [isloading,setIsloading]= useState(false)
+ 
   useEffect(() => {
-    setIsloading(true)
-    const postDetails = userPosts.map((item, i) => {
+    
+    const postDetails = getAllPost.map((item, i) => {
       return (
-        <NewUserPost 
+        <UserPost 
           key={i}
           title={item.title}
           date={item.date}
-          likes={item.likes.length}
+          likes={item.likes}
           text={item.text}
           postImages={item.image}
           id={item._id}
+          author={item.author}
+          comment={item.postComment}
         />
       );
     });
 
     setPosts(postDetails);
-    setIsloading(false)
-  }, [userPosts]);
-
-  if(isloading){
+   
+  }, [getAllPost]);
+  
+  if(isLoading){
     return( <div className="flex justify-center items-center">
     <div
       className="animate-spin inline-block w-8 h-8 border-4 border-t-transparent    border-solid border-orange-300 rounded-full"

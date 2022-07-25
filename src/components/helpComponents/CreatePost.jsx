@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { postsData } from "../../reduxToolkit/reducerTool";
 import { createPost } from "../../reduxToolkit/reducerTool";
+import { set } from "mongoose";
 function CreatePost(props) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -16,7 +17,7 @@ function CreatePost(props) {
  
   const  onHandle =  async (e) => {
     e.preventDefault()
-    setIsloading(true)
+
     //IF CREATE POST INPUT UNDEFINED 
     if (title !== "" && text !== "") {
       //NEW FORM VARIABLE
@@ -43,8 +44,8 @@ function CreatePost(props) {
           throw err;
         });
 
-        dispatch({type : 'GET_ALL_POST',payload : CREATE_POST_DATA})
-        setIsloading(false)
+        dispatch(postsData(CREATE_POST_DATA))
+      
 
 
 

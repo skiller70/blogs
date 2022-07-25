@@ -1,10 +1,36 @@
 import React, { useEffect, useState } from "react";
 // import { useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import { myAction } from "../reduxToolkit/TestReducer";
 // import axios from "axios";
 // import Reduxtest from "./homeComponent/Reduxtest";
 import Aboutcompo from "./Aboutcompo";
+import ShowAllComments from "./helpComponents/ShowAllComments";
 import NewUserPost from "./helpComponents/NewUserPost";
+import { asyncTest } from "../reduxToolkit/TestReducer";
+import TestAbout from "./homeComponent/TestAbout"
 function About(props) {
+      const [checkC,setCheckC] = useState ([{name : 'rahul'}])
+    const dispatch = useDispatch()
+  const testData = useSelector((state)=> state.test.name)
+  const rdata = useSelector(state=> state.custom.POST_DATA)
+  console.log(testData)
+
+const reduxTest = ()=>{
+ 
+dispatch(myAction())
+
+}
+
+
+const checkArray = ()=>{
+
+ dispatch({type:'REDUX_TEST',payload : '56'})
+
+}
+
+
+
   // useEffect(() => {
     
   // },[]);
@@ -46,7 +72,9 @@ function About(props) {
   // };
 
   return (
+   
     <>
+    
       {/* <h1>hello this is about page sadas gsadsa </h1>
       <h2>ggwp {myNum}</h2>
       <button onClick={ggwp}>click me </button>
@@ -54,11 +82,18 @@ function About(props) {
  <Reduxtest /> */}
 
 
- <Aboutcompo/>
+ {/* <NewUserPost/> */} 
 
- {/* <NewUserPost/> */}
+{/* {testData.map((item)=>{ return(<> <h1>{item.name} </h1></>)})  } */}
+<h1>{testData}</h1>
+<h1>{rdata}</h1>
 
-
+<button onClick={reduxTest}> reduxTest</button>
+{/* <h1>{checkC.map(item=> <><h1>{item.name}</h1></>)}</h1> */}
+{console.log('render')}
+<br />
+<button onClick={checkArray}> postcheck</button>
+<TestAbout/>
 
     </>
   );
