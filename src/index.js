@@ -9,7 +9,7 @@ import { postsData } from './reduxToolkit/reducerTool';
 import { POST_COMMENT } from './reduxToolkit/reducerTool';
 
 store.dispatch(postsData)
-store.dispatch(POST_COMMENT)
+store.dispatch({type:'SHOW_ALL_COMMENTS'})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 

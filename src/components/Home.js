@@ -8,16 +8,22 @@ import Logout from "./Logout";
 import jwt from "jwt-decode";
 import { Navigate } from "react-router";
 import NewUserPost from "./helpComponents/NewUserPost";
+import AllUsersComments from "./helpComponents/AllUsersComments";
 function Home(props) {
   const nav = useNavigate();
   const dispatch = useDispatch();
 
 const userName = useSelector((state)=>{return state.custom.POST_DATA})
-const testData = useSelector((state)=> state.test.name)
-
+const dummy = useSelector(state=> state.postComment.dummyComment.commentDate)
   // IF INSIDE LOCAL STORAGE TOKEN EXIST  
   const [userdata,setUserdata] = useState(false)
- 
+
+if(dummy){
+  console.log("dummy exist")
+}else{
+  console.log("dummy does'nt exist")
+}
+
 
   if(userdata){
     return <Navigate to="/about" replace />
@@ -34,11 +40,15 @@ const testData = useSelector((state)=> state.test.name)
     
 
 
-         <h1>{testData}</h1>
-          <h1>{userName }</h1>
          <button onClick={()=>{ dispatch(asyncTest('55'))}}>f me</button>
-
+        
+      <h1>gg {dummy }</h1>
+      <button onClick={()=>{dispatch({type:"CLEAR_DUMMY_COMMENT"}) }}>clear dummy</button>
+      <AllUsersComments />
+      <AllUsersComments />
+      <AllUsersComments />
            </div>
+
     );
     
   }

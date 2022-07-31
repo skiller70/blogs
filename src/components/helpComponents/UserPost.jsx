@@ -109,13 +109,14 @@ function UserPost(props) {
               </div>
                    
 
-
+              {console.log(props)}
+          
             </div>
             {/* USER COMMENT */}
             <div>
 
-                  <Link to={`/comments/${props.id}`} >viewPost</Link>
-            {<AllUsersComments POST_ID={props.id} USER_COMMENT={props.comment}/>}
+                  {props.comment.length > 2 &&<Link to={`/comments/${props.id}`} >viewPost</Link> }
+            {<AllUsersComments POST_ID={props.id} />}
             
             </div>
           

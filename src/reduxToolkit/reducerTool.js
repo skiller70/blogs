@@ -61,7 +61,7 @@ const initialState = {
 };
 
 console.log(initialState.getAllComment)
-export const customReducer = createReducer(initialState, {
+const customReducer = createReducer(initialState, {
   //STORING ALL USER INFO FROM JWT TOKEN ACTION
   USER_INFO_TOKEN: (state, action) => {
     state.USER_TOKEN_VALUE = action.payload;
@@ -101,37 +101,21 @@ export const customReducer = createReducer(initialState, {
     state.status = "failed";
   },
   //SHOW COMMENT ASYNC ACTION
-  [ALL_USER_COMMENTS.pending]: (state, action) => {
-    state.isLoading = true;
-  },
-  [ALL_USER_COMMENTS.rejected]: (state, action) => {
-    state.isLoading = false;
-    state.status = "failed";
-  },
-  [ALL_USER_COMMENTS.fulfilled]: (state, action) => {
-    state.isLoading = false;
-    state.status = "successful";
-    state.getAllComment = action.payload
+  // [ALL_USER_COMMENTS.pending]: (state, action) => {
+  //   state.isLoading = true;
+  // },
+  // [ALL_USER_COMMENTS.rejected]: (state, action) => {
+  //   state.isLoading = false;
+  //   state.status = "failed";
+  // },
+  // [ALL_USER_COMMENTS.fulfilled]: (state, action) => {
+  //   state.isLoading = false;
+  //   state.status = "successful";
+  //   state.getAllComment = action.payload
    
     
-  },
+  // },
   //POST COMMENT ACTION
-  [POST_COMMENT.fulfilled]: (state, action) => {
-    state.status = 'successful'
-    state.getAllComment = [...state.getAllComment,action.payload]
-    state.isLoading = false
-   
-  },
-  [POST_COMMENT.pending]: (state, action) => {
-    state.status = 'loading'
-    state.isLoading = true;
-   
-  },
-  [POST_COMMENT.failed]: (state, action) => {
-    state.status = 'failed'
-    state.isLoading = false
-   
-  },
 
 
 

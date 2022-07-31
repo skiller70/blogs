@@ -12,9 +12,9 @@ import TestAbout from "./homeComponent/TestAbout"
 function About(props) {
       const [checkC,setCheckC] = useState ([{name : 'rahul'}])
     const dispatch = useDispatch()
-  const testData = useSelector((state)=> state.test.name)
+
   const rdata = useSelector(state=> state.custom.POST_DATA)
-  console.log(testData)
+ 
 
 const reduxTest = ()=>{
  
@@ -85,8 +85,8 @@ const checkArray = ()=>{
  {/* <NewUserPost/> */} 
 
 {/* {testData.map((item)=>{ return(<> <h1>{item.name} </h1></>)})  } */}
-<h1>{testData}</h1>
-<h1>{rdata}</h1>
+{/* <h1>{testData}</h1>
+<h1>{rdata}</h1> */}
 
 <button onClick={reduxTest}> reduxTest</button>
 {/* <h1>{checkC.map(item=> <><h1>{item.name}</h1></>)}</h1> */}
