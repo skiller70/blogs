@@ -23,6 +23,7 @@ function AllUsersComments(props) {
 
       dispatch({ type: "POST_COMMENT", payload: COMMENT_DETAIL });
     }
+    setUser_comments("")
   }
   
 
@@ -30,7 +31,7 @@ function AllUsersComments(props) {
   
 
         <div>
-          <input
+          <input value={user_comments}
             onChange={(e) => {
               setUser_comments(e.target.value);
             }}

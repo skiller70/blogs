@@ -27,8 +27,7 @@ import { ALL_USER_COMMENTS } from "./reduxToolkit/reducerTool";
         //INITIAL ALL POSTS RENDER REDUX STORE
      dispatch(postsData())
 
-     //INITIAL ALL COMMENTS RENDER REDUX STORE
-     dispatch(ALL_USER_COMMENTS())
+
 
 
 

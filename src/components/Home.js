@@ -9,6 +9,9 @@ import jwt from "jwt-decode";
 import { Navigate } from "react-router";
 import NewUserPost from "./helpComponents/NewUserPost";
 import AllUsersComments from "./helpComponents/AllUsersComments";
+import { Suspense } from "react";
+const Blogs = React.lazy(()=>import("./Blogs"))
+
 function Home(props) {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -44,9 +47,11 @@ if(dummy){
         
       <h1>gg {dummy }</h1>
       <button onClick={()=>{dispatch({type:"CLEAR_DUMMY_COMMENT"}) }}>clear dummy</button>
-      <AllUsersComments />
-      <AllUsersComments />
-      <AllUsersComments />
+
+
+
+
+
            </div>
 
     );

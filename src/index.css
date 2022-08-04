@@ -8,3 +8,17 @@
   font-family: "KARLA";
   src: url('../public/Karla-Light.ttf');
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .clip-your-needful-style {
+    clip-path: polygon(0 15%, 100% 50%, 100% 86%, 0 50%);
+}
+
+
+
+  }
+
+  
