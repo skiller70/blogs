@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser, faCoffee,faEnvelope,faUserCheck,faLock} from "@fortawesome/free-solid-svg-icons";
 
 function RegisterInputItem(props) {
-  console.log(props.value)
+
     
         const [focus,setFocus] = useState(false)
 

@@ -38,7 +38,7 @@ function Blogs(props) {
   }, [getAllPost]);
   
   if(isLoading){
-    return( <div className="flex justify-center items-center">
+    return( <div className="flex  justify-center items-center ">
     <div
       className="animate-spin inline-block w-8 h-8 border-4 border-t-transparent    border-solid border-orange-300 rounded-full"
       role="status"
@@ -49,7 +49,7 @@ function Blogs(props) {
   }else{
 
     return (
-      <div className="bg-grey-200  w-screen  h-screen">
+      <div className="bg-[#e2e8f0] w-screen  h-screen">
         <CreatePost />
         {posts}
       </div>

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import {
   faUser,
   faCoffee,
@@ -13,10 +14,17 @@ import {
 import RegisterInputItem from "./RegisterInputItem";
 import Formsy, { addValidationRule } from "formsy-react";
 function Register(props) {
+  const dispatch  = useDispatch()
+  const navigate = useNavigate(); 
   const isUser = useSelector((state) => {
     return state.custom.USER_TOKEN_VALUE.username;
   });
+ const NAVIGATION  = useSelector(state=>state.register.NAVIGATION)
+console.log(NAVIGATION)
 
+  useEffect(()=>{
+    navigate(NAVIGATION,{replace:true})
+  },[NAVIGATION ])
   const [focus, setFocus] = useState({ name: false });
   const [canSubmit, setCanSubmit] = useState(false);
 
@@ -49,13 +57,16 @@ const usernameError = {
     setCanSubmit(true);
   };
 
-  const submit = (model) => {};
+  const submit = (model) => {
+
+    dispatch({type:"REGISTER_USER",payload:model})
+  };
 
 
-  const activeButton = <button  className="h-9 rounded-lg bg-violet-600  hover:bg-[#ec4899]           text-white  text-lg  "type="submit" disabled={!canSubmit}>
+  const activeButton = <button  className="h-9 rounded-lg bg-violet-600  hover:bg-[#ec4899]    font-semibold        text-white  text-lg  "type="submit" disabled={!canSubmit}>
   Register
 </button>;
-  const inActiveButton = <button   className="h-9 rounded-lg bg-slate-300 "type="submit" disabled={!canSubmit}>
+  const inActiveButton = <button   className="h-9 rounded-lg  text-gray-600 font-semibold bg-slate-300 "type="submit" disabled={!canSubmit}>
   Register
 </button>;
 

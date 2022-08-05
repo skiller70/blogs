@@ -1,12 +1,19 @@
-import {put,takeEvery,takeLatest,call} from 'redux-saga/effects'
+import {put,takeEvery,takeLatest,call,select} from 'redux-saga/effects'
 import axios from 'axios';
-
+import { LOCATION_CHANGE, push } from 'connected-react-router';
 // ALL ACTION WATCHER **************************************************************
 export default function* actionWatcher(){
 yield takeLatest('SHOW_ALL_COMMENTS',showAllComments)
 yield takeLatest('POST_COMMENT',postUserComment)
+yield takeLatest('REGISTER_USER',registerUser)
 
 }
+
+
+
+
+//NEW WATCH SAGA STORE***************
+
 
 
 //LOAD ALL USERS COMMENTS ON CLINT SIDE **************************************************************
@@ -44,4 +51,24 @@ try {
     console.log('somthing went wrong in post comment ')
     yield put({type : 'CLEAR_DUMMY_COMMENT'})
  }
+}
+
+
+//REGISTRATION FORM **************************************************************
+
+function* registerUser(action){
+    yield put({type:"REGISTER_LOADING_TRUE"})    
+    const ENDPOINT = "http://localhost:5000/api/test/register";
+    const {name,username,password,email} = action.payload
+   
+    const result = yield call(axios.post,ENDPOINT,{name,username,password,email})
+
+    // if(result.status == 200){
+    //     yield put({type:"REGISTER_USER_DATA",payload:result.data})
+    //     yield put({type:"REGISTER_NAVIGATION",payload:"/home"})
+    //     yield put({type:"REGISTER_LOADING_FALSE"})
+    //     yield put({type:"REGISTER_NAVIGATION",payload:""})
+    // }
+
+
 }

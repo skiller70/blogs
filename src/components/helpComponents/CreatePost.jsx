@@ -71,7 +71,7 @@ if(isloading){
 
 
   return (
-    <div className=" flex bg-gray-200 justify-center  font-karla">
+    <div className=" flex bg-[#e2e8f0] justify-center  font-karla">
 
     
 

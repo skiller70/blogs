@@ -8,23 +8,29 @@ const ENDPOINT = "http://localhost:5000/"
 
 function About(props) {
 const dispatch = useDispatch();
-
-
-  return (
+const {navToggle} = useSelector(state=>state.custom)
+console.log(navToggle)
+if(navToggle){
+	return(<><NavToggle/></>)
+  }
+	return (
     
 
-	<div>
-		<NavToggle/>
+		<div>
+		
+	
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	  );
+  }
 
-	</div>
+  
 
-
-
-
-
-
-
-  );
-}
 
 export default About;

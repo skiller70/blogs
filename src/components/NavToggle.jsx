@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 function NavToggle(props) {
     return (
-        <div  className='h-screen bg-red-200'>
+        <div  className='h-screen md:hidden bg-red-200'>
                        
 
-            <nav className='max-w-4xl mx-[170px]  flex h-[130px] ' >
+            <nav className='max-w-4xl mx-[100px]  flex h-[130px] ' >
             <ul className='flex flex-col  justify-evenly   items-start '>
                 <li>
                 <Link to="/" className="   text-gray-600 font-semibold    ">

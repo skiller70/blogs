@@ -48,6 +48,7 @@ export const ALL_USER_COMMENTS = createAsyncThunk(
 
 
 
+
 //GLOBAL STATE
 const initialState = {
   // ALL USER INFO STORE FROM TOKEN
@@ -57,12 +58,17 @@ const initialState = {
   getAllComment: '',
   isLoading: false,
   status: "",
-  reduxTest : [{name : 'rahul'} ]
+  reduxTest : [{name : 'rahul'} ],
+  navToggle : false
 };
 
 console.log(initialState.getAllComment)
 const customReducer = createReducer(initialState, {
   //STORING ALL USER INFO FROM JWT TOKEN ACTION
+
+  navToggleBtn : (state,action)=>{
+    state.navToggle = !state.navToggle
+  },
   USER_INFO_TOKEN: (state, action) => {
     state.USER_TOKEN_VALUE = action.payload;
   },
