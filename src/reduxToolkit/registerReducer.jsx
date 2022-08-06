@@ -3,7 +3,7 @@ import {createReducer} from '@reduxjs/toolkit'
 
 const initialState = {
     LOADING : false,
-    NAVIGATION : '',
+    AUTH_USER : false,
     USER_DATA : ""
 }
 

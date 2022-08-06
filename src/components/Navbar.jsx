@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
-
-import Login from "./Login";
-import Register from "./register/Register";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Logout from "./Logout";
-import ShowAllComments from "./helpComponents/ShowAllComments";
 import { Suspense } from "react";
 import { faS, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavToggle from "./NavToggle";
+import Home from "./Home";
+import Blogs from "./Blogs";
+import Register from "./register/Register";
+import About from "./About";
+import { useNavigate } from "react-router-dom";
 
-const Home = React.lazy(() => import("./Home"));
-const About = React.lazy(() => import("./About"));
-const Blogs = React.lazy(() => import("./Blogs"));
-
+import Login from "./Login/Login";
 function Navbar(props) {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // useEffect(()=>{
 
   // },[match])
@@ -30,22 +28,10 @@ function Navbar(props) {
     return state.custom.navToggle;
   });
 
-  //IF USER EXIST INSIDE THE REDUX THEN SHOW LOGOUT ELSE LOGIN
-  const isLogin = isUser ? (
-    <Logout />
-  ) : (
-    <Link to="/login" className="text-gray-600 font-semibold">
-      Login
-    </Link>
-  );
+  const authUser = useSelector((state) => state.register.AUTH_USER);
 
-  const isRegister = isUser ? (
-    false
-  ) : (
-    <Link to="/register" className=" text-gray-600 font-semibold">
-      Register
-    </Link>
-  );
+  //IF USER EXIST INSIDE THE REDUX THEN SHOW LOGOUT ELSE LOGIN
+
 
   const hamburger = navToggle ? (
     <FontAwesomeIcon
@@ -60,60 +46,77 @@ function Navbar(props) {
   );
 
   return (
-   
-      <>
-        <nav className=" bg-[#e2e8f0]">
-          <div className=" h-15 max-w-xl md:max-w-4xl mx-auto py-2 ">
-            <div className=" flex    justify-between   ">
-              {/* 
+    <>
+      <nav className=" bg-[#e2e8f0]">
+        <div className=" h-15 max-w-xl md:max-w-4xl mx-auto py-2 ">
+          <div className=" flex    justify-between   ">
+            {/* 
       NAVBRAND AND A TAG */}
-              <div className=" flex   space-x-[195px] ">
-                <div className="flex item-center  px-2 h-14 w-20 ">
-                  <img src={require("./Zeronet_logo.png")} alt="" />
-                </div>
-                {/* LINK ITEM */}
-                <div className=" hidden md:flex  items-center space-x-5">
-                  <Link to="/" className="   text-gray-600 font-semibold    ">
-                    Home
-                  </Link>
+            <div className=" flex   space-x-[195px] ">
+              <div className="flex item-center  px-2 h-14 w-20 ">
+                <img src={require("./Zeronet_logo.png")} alt="" />
+              </div>
+              {/* LINK ITEM */}
+              <div className=" hidden md:flex  items-center space-x-5">
+                <Link to="/home" className="   text-gray-600 font-semibold    ">
+                  Home
+                </Link>
 
-                  <Link to="/about" className="text-gray-600 font-semibold">
-                    About
-                  </Link>
+                <Link to="/about" className="text-gray-600 font-semibold">
+                  About
+                </Link>
 
-                  <Link to="/blogs" className="text-gray-600 font-semibold">
-                    Blogs
-                  </Link>
-               
-                </div>
+                <Link to="/blogs" className="text-gray-600 font-semibold">
+                  Blogs
+                </Link>
+
+                <button
+                  onClick={() => {
+                    dispatch({ type: "checkRoute", payload: navigate });
+                  }}
+                >
+                  {" "}
+                  click me
+                </button>
+              </div>
+            </div>
+
+            {/* LOGIN SIGN UP */}
+
+            <div className=" mx-5 flex gap-8">
+              <div className="  hidden md:flex items-center ">
+                <Link to="login">Login</Link>
               </div>
 
-              {/* LOGIN SIGN UP */}
+              <div className="  flex md:hidden  self-center">
+                <button
+                  className="hover:text-blue-300"
+                  onClick={() => {
+                    dispatch({ type: "navToggleBtn" });
+                  }}
+                >
+                  {hamburger}
+                </button>
+              </div>
 
-              <div className=" mx-5 flex gap-8">
-                <div className="  hidden md:flex items-center ">{isLogin}</div>
-
-                <div className="  flex md:hidden  self-center">
-                  <button
-                    className="hover:text-blue-300"
-                    onClick={() => {
-                      dispatch({ type: "navToggleBtn" });
-                    }}
-                  >
-                   {hamburger}
-                  </button>
-                </div>
-
-                <div className=" hidden md:flex items-center  ">
-                  {isRegister}
-                </div>
+              <div className=" hidden md:flex items-center  ">
+                <Link to="register">Register</Link>
               </div>
             </div>
           </div>
-        </nav>
-        <div></div>
+        </div>
+      </nav>
 
-        {/* <div className=" w-100% text-white bg-blue-400 h-8 justify-around flex">
+      <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/home" element={<Home />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+    
+      </Routes>
+
+      {/* <div className=" w-100% text-white bg-blue-400 h-8 justify-around flex">
           <span>LOgo</span>
 
           <ul className="flex ">
@@ -139,45 +142,7 @@ function Navbar(props) {
           </span>
         </div>
        */}
-        <Routes>
-          <Route
-            exact
-            pathname="/"
-            element={
-              <Suspense>
-                <Home />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            pathname="/about"
-            element={
-              <Suspense>
-                <About />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            path="/blogs"
-            element={
-              <Suspense>
-                <Blogs />
-              </Suspense>
-            }
-          ></Route>
-          <Route pathname="/login" element={<Login />}></Route>
-          <Route pathname="/logout" element={<Home />}></Route>
-          <Route exact pathname="/register" element={<Register />}></Route>
-          <Route
-            pathname="/comments/:commentId"
-            element={<ShowAllComments />}
-          ></Route>
-          <Route pathname="/navToggle" element={<NavToggle />}>
-            {" "}
-          </Route>
-        </Routes>
-      </>
-    
+    </>
   );
 }
 

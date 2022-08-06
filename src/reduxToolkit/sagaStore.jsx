@@ -57,18 +57,21 @@ try {
 //REGISTRATION FORM **************************************************************
 
 function* registerUser(action){
-    yield put({type:"REGISTER_LOADING_TRUE"})    
+
+     yield put({type:"REGISTER_LOADING_TRUE"})    
     const ENDPOINT = "http://localhost:5000/api/test/register";
     const {name,username,password,email} = action.payload
-   
-    const result = yield call(axios.post,ENDPOINT,{name,username,password,email})
 
-    // if(result.status == 200){
-    //     yield put({type:"REGISTER_USER_DATA",payload:result.data})
-    //     yield put({type:"REGISTER_NAVIGATION",payload:"/home"})
-    //     yield put({type:"REGISTER_LOADING_FALSE"})
-    //     yield put({type:"REGISTER_NAVIGATION",payload:""})
-    // }
+    const result = yield call(axios.post,ENDPOINT,{name,username,password,email})
+  
+
+
+    if(result.status == 200){
+        yield put({type:"REGISTER_USER_DATA",payload:result.data})
+        yield localStorage.setItem("token",result.data)
+        yield put({type:"REGISTER_NAVIGATION",payload:true})
+       
+    }
 
 
 }

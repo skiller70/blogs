@@ -7,18 +7,22 @@ import store from './reduxToolkit/storeTool';
 import { Provider } from 'react-redux';
 import { postsData } from './reduxToolkit/reducerTool';
 import { POST_COMMENT } from './reduxToolkit/reducerTool';
-
+import {ReactReduxContext} from 'react-redux';
+import {Route,Routes} from "react-router-dom"
+import { history } from "./reduxToolkit/storeTool";
+import {ConnectedRouter} from "connected-react-router"
+import {BrowserRouter} from "react-router-dom"
 store.dispatch(postsData)
 store.dispatch({type:'SHOW_ALL_COMMENTS'})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-<Provider store={store}>
-  
-    <App />
-    
+<Provider store={store} >
+  <BrowserRouter>
+  <App  />
+  </BrowserRouter>
     </Provider>
- 
+    
   
 );
 

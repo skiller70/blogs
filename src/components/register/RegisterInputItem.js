@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {withFormsy} from "formsy-react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser, faCoffee,faEnvelope,faUserCheck,faLock} from "@fortawesome/free-solid-svg-icons";
@@ -6,7 +6,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function RegisterInputItem(props) {
 
     
-        const [focus,setFocus] = useState(false)
+  const [focus,setFocus] = useState(false)
+  const [error,setError] = useState(false)
+useEffect(()=>{
+if(props.errorMessage){
+  setError(true)
+}else{
+  setError(false)
+}
+
+},[props.errorMessage])
+
+
+
+
+const errorTrue = " h-8 w-auto border-2  rounded-lg focus-within:border-red-300  "
+
+const errorFalse = " h-8 w-auto border-2  rounded-lg focus-within:border-indigo-400  "
 
 
 
@@ -14,13 +30,7 @@ function RegisterInputItem(props) {
 
 
 
-
-
-
-
-
-
-
+console.log(props.errorMessage)
 
   const errorMessage = props.errorMessage;
     return (
@@ -33,7 +43,8 @@ function RegisterInputItem(props) {
           onFocusCapture={() => {
             setFocus(true)
           }}
-          className=" h-8 w-auto border-2  rounded-lg focus-within:border-indigo-400  "
+            
+          className={error?errorTrue:errorFalse}  
         >
           <FontAwesomeIcon
             className=" mr-2"

@@ -6,6 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import { createSelector } from "@reduxjs/toolkit";
 import axios from "axios";
+
 import AllUsersComments from "../components/helpComponents/AllUsersComments";
 
 // FETCH ALL USER POSTS FROM SERVER ASYNC FUNCTION
@@ -65,6 +66,14 @@ const initialState = {
 console.log(initialState.getAllComment)
 const customReducer = createReducer(initialState, {
   //STORING ALL USER INFO FROM JWT TOKEN ACTION
+
+  checkRoute:(state,action)=>{
+    action.payload("/blogs")
+
+  },
+
+
+
 
   navToggleBtn : (state,action)=>{
     state.navToggle = !state.navToggle

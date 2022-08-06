@@ -12,19 +12,23 @@ import {
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import RegisterInputItem from "./RegisterInputItem";
-import Formsy, { addValidationRule } from "formsy-react";
+import Formsy  from "formsy-react";
 function Register(props) {
   const dispatch  = useDispatch()
   const navigate = useNavigate(); 
-  const isUser = useSelector((state) => {
+const isUser = useSelector((state) => {
     return state.custom.USER_TOKEN_VALUE.username;
   });
  const NAVIGATION  = useSelector(state=>state.register.NAVIGATION)
-console.log(NAVIGATION)
 
-  useEffect(()=>{
-    navigate(NAVIGATION,{replace:true})
-  },[NAVIGATION ])
+useEffect(()=>{
+if(NAVIGATION){
+  navigate("/home")
+}
+
+},[NAVIGATION])
+
+
   const [focus, setFocus] = useState({ name: false });
   const [canSubmit, setCanSubmit] = useState(false);
 
@@ -59,11 +63,11 @@ const usernameError = {
 
   const submit = (model) => {
 
-    dispatch({type:"REGISTER_USER",payload:model})
+    dispatch({type:"REGISTER_USER",payload:model })
   };
 
 
-  const activeButton = <button  className="h-9 rounded-lg bg-violet-600  hover:bg-[#ec4899]    font-semibold        text-white  text-lg  "type="submit" disabled={!canSubmit}>
+  const activeButton = <button  className="h-9 rounded-lg bg-violet-600  hover:bg-[#ec4899]    font-semibold        text-white  text-lg  disabled={!canSubmit} "type="submit" >
   Register
 </button>;
   const inActiveButton = <button   className="h-9 rounded-lg  text-gray-600 font-semibold bg-slate-300 "type="submit" disabled={!canSubmit}>
@@ -78,10 +82,12 @@ const usernameError = {
 <>
 <div className=" bg-[#e2e8f0]">
       <div className=" h-screen clip-your-needful-style bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  "></div>
-        <div className="w-[275px] h-[400px] rounded-lg flex  shadow-md justify-center items-center   absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2     bg-white ">
-          {/* inside block */}
 
-          <Formsy
+        <div className="grid  gap-5 justify-evenly items-center     bg-transparent absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2   " >
+          
+        <div className="w-[275px] h-[400px] rounded-lg flex  shadow-md justify-center items-center      bg-white ">
+          {/* inside block */}
+<Formsy
             onValidSubmit={submit}
             onValid={enableButton}
             onInvalid={disableButton}
@@ -144,6 +150,15 @@ const usernameError = {
 
         <div className=" bg-slate-600"></div>
       </div>
+
+
+       
+
+  
+
+
+        </div>
+
       </div>
       </>
     );
