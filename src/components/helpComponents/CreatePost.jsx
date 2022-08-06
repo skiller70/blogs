@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { postsData } from "../../reduxToolkit/reducerTool";
 import { createPost } from "../../reduxToolkit/reducerTool";
-import { set } from "mongoose";
 function CreatePost(props) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -84,7 +83,7 @@ if(isloading){
             }}
             type="text"
             placeholder="Title"
-            className=" rounded px-2 px-3 shadow border  my-5  text-gray-700  leading-tight  focus:shadow-outline w-72 h-8"
+            className=" rounded px-2  shadow border  my-5  text-gray-700  leading-tight  focus:shadow-outline w-72 h-8"
           />
         </div>
         <div>
