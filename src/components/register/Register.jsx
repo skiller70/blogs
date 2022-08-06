@@ -83,17 +83,21 @@ const usernameError = {
 <div className=" bg-[#e2e8f0]">
       <div className=" h-screen clip-your-needful-style bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  "></div>
 
-        <div className="grid  gap-5 justify-evenly items-center     bg-transparent absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2   " >
+        <div className="    bg-transparent absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2   " >
           
-        <div className="w-[275px] h-[380px] rounded-lg flex  shadow-md justify-center items-center      bg-white ">
+        <div className="w-[275px] h-[40 0px] rounded-lg flex  shadow-md justify-center items-center      bg-white ">
           {/* inside block */}
 <Formsy
             onValidSubmit={submit}
             onValid={enableButton}
             onInvalid={disableButton}
-            className=" w-[235px] h-[350px] flex flex-col justify-evenly "
+            className=" w-[235px] h-[400px] flex flex-col justify-evenly "
           >
-            <RegisterInputItem
+           
+           
+           <div className="">
+        
+           <RegisterInputItem
               validations="minLength:3,maxLength:12,isAlpha"
               validationErrors={errorMessage}
               name="name"
@@ -103,7 +107,11 @@ const usernameError = {
               type="text"
             />
 
-            <RegisterInputItem
+
+           </div>
+           
+           <div className=" leading-3 ">
+           <RegisterInputItem
               validations="minLength:6,isAlphanumeric,maxLength:16 " 
               validationErrors={usernameError}
               name="username"
@@ -112,7 +120,11 @@ const usernameError = {
               required
               type="text"
             />
-            <RegisterInputItem
+
+           </div>
+           
+   <div>
+   <RegisterInputItem
               validations="isEmail"
               validationErrors={errorMessage} 
               name="email"
@@ -123,7 +135,12 @@ const usernameError = {
               
             />
 
-            <RegisterInputItem
+   </div>
+     
+       
+<div>
+
+<RegisterInputItem
               validations="minLength:8,maxLength:25 "
               validationErrors={passwordError}
               name="password"
@@ -133,6 +150,8 @@ const usernameError = {
               type="password"
             />
 
+</div>
+            <div className="leading-3">
             <RegisterInputItem
               validations="equalsField:password,minLength:8"
               validationErrors={passwordError}
@@ -142,6 +161,7 @@ const usernameError = {
               required
               type="password"
             />
+            </div>
 
       {canSubmit?activeButton:inActiveButton}
 

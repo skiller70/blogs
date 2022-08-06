@@ -20,9 +20,9 @@ if(props.errorMessage){
 
 
 
-const errorTrue = " h-8 w-auto border-2  rounded-lg focus-within:border-red-300  "
+const errorTrue = " h-8 w-auto border-2 flex  justify-center rounded-lg focus-within:border-red-300  "
 
-const errorFalse = " h-8 w-auto border-2  rounded-lg focus-within:border-indigo-400  "
+const errorFalse = " h-8 w-auto border-2 flex justify-center rounded-lg focus-within:border-indigo-400  "
 
 
 
@@ -44,25 +44,26 @@ console.log(props.errorMessage)
             setFocus(true)
           }}
             
-          className={error?errorTrue:errorFalse}  
+          className={error?errorTrue:errorFalse }
+            
         >
           <FontAwesomeIcon
-            className=""
+            className=" my-2  pl-2 items-center"
             icon={props.icon}
             color={focus? "#8978D9" : "grey"}
           />
           <input
             value={props.value || ""}
             onChange={(e)=>props.setValue(e.currentTarget.value)  }
-            className="  focus:outline-none  focus-within:placeholder-indigo-400 "
+            className=" pl-2 w-[200px] bg-transparent focus:outline-none  focus-within:placeholder-indigo-400 "
             placeholder={props.placeholder}
             type={props.type}
           />
-          <br />
+          
    
        
         </div>
-           <span className=' text-red-500 text-xs  my-[-18px]'>{errorMessage}</span>
+           <span className=' text-red-500 text-xs 	 '>{errorMessage}</span>
           
            </>
     );
