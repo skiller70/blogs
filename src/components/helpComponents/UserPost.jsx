@@ -62,7 +62,7 @@ function UserPost(props) {
         <div className=" flex flex-col my-10 max-w-lg md:max-w-xl  bg-white lg:shadow-lg lg:rounded-lg ">
           <img
             className=" lg:rounded-t-lg  max-h-56 "
-            src={require(`./images/${props.postImages}`)}
+            
             alt=""
           />
 
