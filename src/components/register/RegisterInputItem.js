@@ -20,9 +20,9 @@ if(props.errorMessage){
 
 
 
-const errorTrue = " h-8 w-auto border-2 flex  justify-center rounded-lg focus-within:border-red-300  "
+const errorTrue = " h-9 w-auto border-2 flex  justify-center rounded-lg focus-within:border-red-300  "
 
-const errorFalse = " h-8 w-auto border-2 flex justify-center rounded-lg focus-within:border-indigo-400  "
+const errorFalse = " h-9 w-auto border-2 flex justify-center rounded-lg focus-within:border-indigo-400  "
 
 
 
