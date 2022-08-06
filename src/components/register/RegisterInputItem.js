@@ -47,7 +47,7 @@ console.log(props.errorMessage)
           className={error?errorTrue:errorFalse}  
         >
           <FontAwesomeIcon
-            className=" mr-2"
+            className=""
             icon={props.icon}
             color={focus? "#8978D9" : "grey"}
           />

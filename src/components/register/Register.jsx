@@ -85,13 +85,13 @@ const usernameError = {
 
         <div className="grid  gap-5 justify-evenly items-center     bg-transparent absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2   " >
           
-        <div className="w-[275px] h-[400px] rounded-lg flex  shadow-md justify-center items-center      bg-white ">
+        <div className="w-[275px] h-[380px] rounded-lg flex  shadow-md justify-center items-center      bg-white ">
           {/* inside block */}
 <Formsy
             onValidSubmit={submit}
             onValid={enableButton}
             onInvalid={disableButton}
-            className=" w-[235px] h-[375px] flex flex-col justify-evenly "
+            className=" w-[235px] h-[350px] flex flex-col justify-evenly "
           >
             <RegisterInputItem
               validations="minLength:3,maxLength:12,isAlpha"

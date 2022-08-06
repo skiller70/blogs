@@ -50,7 +50,7 @@ const errorMessage = {
       <div className="  bg-[#e2e8f0]">
         <div className="  rotate-180 h-screen wave-clip bg-gradient-to-r from-indigo-500  to-[#22d3ee] "></div>
         <div className="     absolute top-1/2   left-1/2 transform -translate-x-1/2 -translate-y-1/2 grid   justify-center   items-center  ">
-          <div className=" w-[400px] h-[350px]  shadow-lg  flex  justify-center items-center rounded-xl bg-white">
+          <div className=" w-[350px] h-[350px]  shadow-lg  flex  justify-center items-center rounded-xl bg-white">
             <Formsy
               className=" w-[300px] h-[320px] flex  items-center    justify-evenly   flex-col  "
               onValidSubmit={submitButton}
