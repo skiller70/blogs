@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { postsData } from '../../reduxToolkit/reducerTool';
@@ -26,7 +26,7 @@ function LikePosts(props) {
 
 
 
-    const nav = useNavigate();
+    // const nav = useNavigate();
    
     const likePost= async (e) => {
         e.preventDefault();
@@ -60,7 +60,7 @@ function LikePosts(props) {
               setLike(false);
             });
         } else {
-          nav("/login");
+          // nav("/login");
         }
       };
 

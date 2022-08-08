@@ -6,7 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import { createSelector } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import { push } from "redux-first-history";
 import AllUsersComments from "../components/helpComponents/AllUsersComments";
 
 // FETCH ALL USER POSTS FROM SERVER ASYNC FUNCTION
@@ -68,7 +68,7 @@ const customReducer = createReducer(initialState, {
   //STORING ALL USER INFO FROM JWT TOKEN ACTION
 
   checkRoute:(state,action)=>{
-    action.payload("/blogs")
+    push("/login")
 
   },
 

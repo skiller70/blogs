@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
+
 import {
   faUser,
   faCoffee,
@@ -15,18 +14,11 @@ import RegisterInputItem from "./RegisterInputItem";
 import Formsy  from "formsy-react";
 function Register(props) {
   const dispatch  = useDispatch()
-  const navigate = useNavigate(); 
+  
 const isUser = useSelector((state) => {
     return state.custom.USER_TOKEN_VALUE.username;
   });
- const NAVIGATION  = useSelector(state=>state.register.NAVIGATION)
-
-useEffect(()=>{
-if(NAVIGATION){
-  navigate("/home")
-}
-
-},[NAVIGATION])
+ 
 
 
   const [focus, setFocus] = useState({ name: false });
@@ -76,7 +68,7 @@ const usernameError = {
 
   //CHECK IF USER EXIST THEN GO TO HOME
   if (isUser) {
-    return <Navigate to="/" replace />;
+
   } else {
     return (
 <>

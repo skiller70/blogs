@@ -1,26 +1,27 @@
 import {postComments} from "./postComments";
-import {configureStore,combineReducers } from "@reduxjs/toolkit";
+import {configureStore, } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
-import { attachRouterHistory } from 'connected-react-router-history';
+import { createBrowserHistory } from "history";
+import { createReduxHistoryContext } from "redux-first-history";
+
 import customReducer from "./reducerTool";
-import registerUser  from "./registerReducer";
+import registerUser  from "./registerReducer";    
 import actionWatcher from "./sagaStore";
 
-import { createBrowserHistory } from "history";
-import { routerMiddleware,connectRouter } from 'connected-react-router'
-export const history = createBrowserHistory()
 
-
+const {createReduxHistory,routerMiddleware,routerReducer} = createReduxHistoryContext({history : createBrowserHistory()  })
 const saga = createSagaMiddleware();
 
 
 const store = configureStore({
-  reducer : { custom : customReducer,postComment:postComments,register:registerUser },
-  middleware :getDefaultMiddleware=>getDefaultMiddleware().concat(saga,) 
+  reducer : { custom : customReducer,postComment:postComments,router:routerReducer},
+  middleware :getDefaultMiddleware=>getDefaultMiddleware().concat(saga,routerMiddleware)
 })
 
 
 saga.run(actionWatcher);  
+
+export const history = createReduxHistory(store);
 
 
 export default store;

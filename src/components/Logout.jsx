@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+
 
 import { useDispatch, useSelector } from "react-redux";
 
 function Logout(props) {
-  const nav = useNavigate();
+  // const nav = useNavigate();
   const dispatch = useDispatch();
   //IF USER WANT LOGOUT THEN SEND  LOGOUT REQUEST TO SERVER
   const userLogout = () => {
     //CLEAR LCOAL STORAGE
     localStorage.removeItem("token");
     dispatch({ type: "LOGOUT", payload: "" });
-    nav("/login");
+    // nav("/login");
   };
 
   return (

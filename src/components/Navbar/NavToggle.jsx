@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 function NavToggle(props) {
     return (
-        <div  className='h-screen md:hidden bg-red-200'>
+        <div  className='h-screen  z-50 md:hidden bg-[#e2e8f0]'>
                        
 
             <nav className='max-w-4xl mx-[100px]  flex h-[130px] ' >
