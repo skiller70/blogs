@@ -10,14 +10,14 @@
 // export default PrivetLogin;
 
 
-import { Navigate,Outlet } from 'react-router-dom';
-import React from 'react';
+// import { Navigate,Outlet } from 'react-router-dom';
+// import React from 'react';
 
-function PrivetLogin(props) {
-    let check = true;
-    return (
-        check?<Navigate to="/"/>:<Outlet></Outlet>
-    );
-}
+// function PrivetLogin(props) {
+//     let check = true;
+//     return (
+//         check?<Navigate to="/"/>:<Outlet></Outlet>
+//     );
+// }
 
-export default PrivetLogin;
+// export default PrivetLogin;

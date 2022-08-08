@@ -3,6 +3,7 @@ import {configureStore, } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
 import { createBrowserHistory } from "history";
 import { createReduxHistoryContext } from "redux-first-history";
+import ALL_UI from "./allUi";
 
 import customReducer from "./reducerTool";
 import registerUser  from "./registerReducer";    
@@ -14,7 +15,7 @@ const saga = createSagaMiddleware();
 
 
 const store = configureStore({
-  reducer : { custom : customReducer,postComment:postComments,router:routerReducer},
+  reducer : { custom : customReducer,postComment:postComments,appUi: ALL_UI, router:routerReducer},
   middleware :getDefaultMiddleware=>getDefaultMiddleware().concat(saga,routerMiddleware)
 })
 

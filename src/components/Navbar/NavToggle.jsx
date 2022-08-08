@@ -1,25 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 function NavToggle(props) {
+  const dispatch = useDispatch();
     return (
-        <div  className='h-screen  z-50 md:hidden bg-[#e2e8f0]'>
+        <div  className='h-screen   md:hidden bg-[#e2e8f0]'>
                        
 
-            <nav className='max-w-4xl mx-[100px]  flex h-[130px] ' >
+            <nav className='max-w-4xl mx-[100px] z-50 absolute flex h-[130px] ' >
             <ul className='flex flex-col  justify-evenly   items-start '>
                 <li>
-                <Link to="/" className="   text-gray-600 font-semibold    ">
+                <Link onClick={()=>{dispatch({type:"CHANGE_ROUTE"})}} to="/" className="   text-gray-600 font-semibold    ">
                 Home
               </Link>
                 </li>
                 <li>
-                <Link to="/about" className="text-gray-600 font-semibold">
+                <Link onClick={()=>{dispatch({type:"CHANGE_ROUTE"})}} to="/about" className="text-gray-600 font-semibold">
                 About
               </Link>
                 </li>
                 <li>
              
-                <Link to="/blogs" className="text-gray-600 font-semibold">
+                <Link  onClick={()=>{dispatch({type:"CHANGE_ROUTE"})}} to="/blogs" className="text-gray-600 font-semibold">
                 Blogs
               </Link>
                 </li>

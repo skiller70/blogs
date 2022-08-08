@@ -9,13 +9,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import LoginItems from "./LoginItems";
 import Formsy from "formsy-react";
+import { useSelector } from "react-redux";
 function Login(props) {
   const [canSubmit, setCanSubmit] = useState(false);
+
+  const navToggle = useSelector(state=> state.appUi.NAVBAR_TOGGLE)
 
 const errorMessage = {
 
   
 }
+
+const toggleClass = navToggle?" absolute top-1/2   left-1/2 transform -translate-x-1/2 -translate-y-[-50px] grid   justify-center items-center ":" absolute top-1/2   left-1/2 transform -translate-x-1/2 -translate-y-1/2 grid   justify-center items-center "
 
   const disableButton = () => {
     setCanSubmit(false);
@@ -47,9 +52,9 @@ const errorMessage = {
 
   return (
     <>
-      <div className="  bg-[#e2e8f0]">
+      <div className=" h-screen bg-[#e2e8f0]">
         <div className="  rotate-180 h-screen wave-clip bg-gradient-to-r from-indigo-500  to-[#22d3ee] "></div>
-        <div className="     absolute top-1/2   left-1/2 transform -translate-x-1/2 -translate-y-1/2 grid   justify-center   items-center  ">
+        <div className={toggleClass}>
           <div className=" w-[350px] h-[350px]  shadow-lg  flex  justify-center items-center rounded-xl bg-white">
             <Formsy
               className=" w-[300px] h-[320px] flex  items-center    justify-evenly   flex-col  "

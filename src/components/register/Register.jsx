@@ -19,10 +19,22 @@ const isUser = useSelector((state) => {
     return state.custom.USER_TOKEN_VALUE.username;
   });
  
-
+  const navToggle = useSelector(state=> state.appUi.NAVBAR_TOGGLE)
 
   const [focus, setFocus] = useState({ name: false });
   const [canSubmit, setCanSubmit] = useState(false);
+
+
+
+
+
+
+  const toggleClass = navToggle
+  ? " absolute top-1/2   left-1/2 transform -translate-x-1/2 -translate-y-[-25px]   justify-center items-center "
+  : " absolute top-1/2   left-1/2 transform -translate-x-1/2 -translate-y-1/2   justify-center items-center ";
+
+
+
 
   const errorMessage = {
     maxLength:"12 character should be max length",
@@ -72,12 +84,12 @@ const usernameError = {
   } else {
     return (
 <>
-<div className=" bg-[#e2e8f0]">
+<div className=" h-screen bg-[#e2e8f0] ">
       <div className=" h-screen clip-your-needful-style bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  "></div>
 
-        <div className="    bg-transparent absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2   " >
+        <div className={toggleClass} >
           
-        <div className="w-[275px] h-[40 0px] rounded-lg flex  shadow-md justify-center items-center      bg-white ">
+        <div className="w-[275px] h-[400px] rounded-lg flex  shadow-md justify-center items-center     bg-white ">
           {/* inside block */}
 <Formsy
             onValidSubmit={submit}

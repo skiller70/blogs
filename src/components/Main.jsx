@@ -17,7 +17,7 @@ function Main(props) {
   return (
     <div>
     <div className=" w-full ">
-    <Navbar/>
+    <Navbar/> 
     </div>
 
       <Routes>
@@ -31,9 +31,9 @@ function Main(props) {
 
 <Route path="/navtoggle" element={<NavToggle/>}/>
 
-<Route path="/" element={<PrivetLogin/>}>
+
 <Route path="/login" element={<Login/>}/>
-</Route>
+
 </Routes>
 
      

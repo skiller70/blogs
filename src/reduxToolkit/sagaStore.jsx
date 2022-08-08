@@ -7,7 +7,7 @@ export default function* actionWatcher(){
 yield takeLatest('SHOW_ALL_COMMENTS',showAllComments)
 yield takeLatest('POST_COMMENT',postUserComment)
 yield takeLatest('REGISTER_USER',registerUser)
-yield takeEvery("ChangeRoute",myRoute)
+yield takeEvery("CHANGE_ROUTE",myRoute)
 
 }
 
@@ -80,8 +80,6 @@ function* registerUser(action){
 
 
 function* myRoute(action){
-yield put(replace("navtoggle"))
-yield delay(1000)
-yield put(goBack())
+yield put({type :"navToggle"})
 
 }

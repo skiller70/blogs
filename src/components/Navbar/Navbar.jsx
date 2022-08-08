@@ -20,18 +20,14 @@ function Navbar(props) {
     return state.custom.USER_TOKEN_VALUE.username;
   });
 
-const[navbarToggle,setNavToggle] = useState(false)
+const UI_TOGGLE = useSelector(state=>state.appUi.NAVBAR_TOGGLE)
 
-const navToggleBtn = ()=>{
-
-  setNavToggle(val=>!val)
-}
 
   // const authUser = useSelector((state) => state.register.AUTH_USER);
 
   //IF USER EXIST INSIDE THE REDUX THEN SHOW LOGOUT ELSE LOGIN
 
-  const hamburger = navbarToggle? (
+  const hamburger = UI_TOGGLE? (
     <FontAwesomeIcon
       className="    w-8 h-7   border-2  border-gray-700 rounded text-gray-600 font-semibold "
       icon={faXmark}
@@ -92,7 +88,7 @@ const navToggleBtn = ()=>{
               <div className="  flex md:hidden  self-center">
                 <button
                   className="hover:text-blue-300"
-                  onClick={navToggleBtn}
+                  onClick={()=>{dispatch({type:"CHANGE_ROUTE"})}}
                 >
                   {hamburger}
                 </button>
@@ -103,8 +99,9 @@ const navToggleBtn = ()=>{
               </div>
             </div>
           </div>
+          {console.log(UI_TOGGLE)}
         </div>
-        {navbarToggle? <NavToggle/>:null}
+        {UI_TOGGLE? <NavToggle/>:null}
       </nav>
 
 
